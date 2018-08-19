@@ -1,0 +1,9 @@
+# Netlify redirects. See https://www.netlify.com/docs/redirects/
+{{  range $p := .Site.Pages -}}
+{{ range .Aliases }}
+{{  . | printf "%-35s" }}	{{ $p.RelPermalink -}}
+{{ end -}}
+{{- end -}}
+# http and https need separate rules if you don't force_ssl!
+https://www.goodwithtech.com/* https://goodwithtech.org/:splat 301!
+https://goodwithtech.com/* https://goodwithtech.org/:splat 301!
