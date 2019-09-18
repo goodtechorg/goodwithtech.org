@@ -1,18 +1,15 @@
 +++
 actiontypes = ["code"]
-causes = []
-draft = true
+causes = ["Open source"]
 eligibility = "Anyone who can code!"
-experience = ""
-location = ""
-opportunity = "Join "
+location = "Worldwide"
+opportunity = "Join this friday and contribute to the software you use and love"
 publishdate = "2019-09-17T23:00:00+00:00"
 summary = "Open source is made by people just like you. This Friday, invest a few hours contributing to the software you use and love."
 title = "Contribute to Open Source Friday"
 [commitment]
-frequency = ""
+frequency = "ad-hoc"
 time = ""
-
 +++
 Open source is made by people just like you. [This Friday, invest a few hours contributing to the software you use and love.](https://opensourcefriday.com)
 
