@@ -5,13 +5,13 @@ summary: "Commit to balancing both purpose and profit and join a movement of peo
 causes: ["Ethical Business"]
 isBusinessAction: true
 comments: false
-actionUrl: "https://www.bcorporation.com"
+actionUrl: "https://www.bcorporation.net"
 commitment:
     time: "long-term"
     frequency: ongoing
 actiontypes: ["pledge"]
 location: "Worldwide"
-eligibility: "A business"
+eligibility: "Founder or senior exec in a business"
 opportunity: "Make a binding commitment to donate a chosen percentage of your personal proceeds at the point of liquidity. Choose the percentage that's right for you, above our minimum 2%."
 ---
 

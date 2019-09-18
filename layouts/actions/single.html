@@ -9,7 +9,6 @@
         ================================================== -->
     <div class="container">
         <div class="row">
-
             <!-- Post Share -->
             <div class="col-md-2 pl-0">
                 {{- partial "single-partials/share.html" . -}}
@@ -18,35 +17,51 @@
             <div class="col-md-9 flex-first flex-md-unordered">
                 <div class="mainheading">
                     <h1 class="posttitle">{{ .Title }}</h1>
-                    
-                    <span class="action-meta">Eligibility: </span>
-                    <span class="action-meta-detail">{{ .Params.eligibility }} </span><br />
-                    <span class="action-meta">Location:</span> <span class="badge badge-secondary badge-pill">{{.Params.location}}</span>
-                    <span class="action-meta">Commitment: </span> <span class="badge badge-secondary badge-pill">{{ .Params.commitment.time }}</span> <span class="badge badge-secondary badge-pill">{{.Params.commitment.frequency}}</span><br />
-                    <span class="action-meta">Causes: </span>
-                    {{ range .Params.causes }}
-                    <a class="badge badge-secondary badge-pill" href="{{ "/causes/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-                {{ end }}
                 </div>
+                <div class="p-3 mb-3 border bg-light">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <span class="action-meta">Causes: </span>
+                                {{ range .Params.causes }}
+                                <a class="badge badge-secondary badge-pill"
+                                    href="{{ "/causes/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                                {{ end }}<br />
+                            <span class="action-meta">Commitment: </span> <span
+                                class="badge badge-secondary badge-pill">{{ .Params.commitment.time }}</span>
+                            <span class="badge badge-secondary badge-pill">{{.Params.commitment.frequency}}</span>
+                        </div>
+                        <div class="col-md-7">
+                                <span class="action-meta">Location:</span> <span
+                                class="badge badge-secondary badge-pill">{{.Params.location}}</span><br />
+                            
+                            {{$url := .Params.actionUrl}}
+                            <span class="action-meta">Website: </span><span class="action-meta-detail"><a
+                                    href="{{ .Params.actionUrl }}">{{ (urls.Parse $url).Host }}</a></span>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-9">
+                            <span class="action-meta">Action: </span>
+                            <span class="action-meta-detail">{{.Params.opportunity}}</span><br />
 
-                <!-- Post Featured Image -->
-                {{with .Params.image}}
-                <img class="featured-image img-fluid" src="{{ . | urlize | relURL }}" alt="thumbnail for this post">
-                {{end}}
-                <!-- End Featured Image -->
-
+                            <span class="action-meta">Skills / Eligibility: </span>
+                            <span class="action-meta-detail">{{ .Params.eligibility }} </span><br />
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <a href="{{.Params.actionUrl }}" class="btn btn-primary">Find out more</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Post Content -->
                 <div class="article-post">
-                    {{ .Content}}
-                    <h3>Opportunity for action</h3>
-                    <p>{{ .Params.opportunity }}</p>
-                    <p><a href="{{.Params.actionUrl }}" class="btn btn-secondary">Take action now</a></p>
 
+                    {{ .Content}}
                     <h3>Experiences</h3>
                     <div class="article-post">
                         {{ $reusablePages := .Resources.Match "experience*" }}
                         {{ range $reusablePages }}
-                        <h5>{{ .Params.Author }} on <a href="{{.Params.src}}">{{ (urls.Parse .Params.src).Host }}</a>: </h5>
+                        <h5>{{ .Params.Author }} on <a href="{{.Params.src}}">{{ (urls.Parse .Params.src).Host }}</a>:
+                        </h5>
                         <blockquote>{{ .Content }}</blockquote>
                         {{ end }}
                     </div>

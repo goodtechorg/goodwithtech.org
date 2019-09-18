@@ -7,6 +7,7 @@ opportunity = "Join this friday and contribute to the software you use and love"
 publishdate = "2019-09-17T23:00:00+00:00"
 summary = "Open source is made by people just like you. This Friday, invest a few hours contributing to the software you use and love."
 title = "Contribute to Open Source Friday"
+actionUrl = "https://opensourcefriday.com/"
 [commitment]
 frequency = "ad-hoc"
 time = ""
