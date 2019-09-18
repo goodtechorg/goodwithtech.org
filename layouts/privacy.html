@@ -1,0 +1,22 @@
+{{ define "header"}}
+    {{- partial "_shared/navbar.html" . -}}
+{{ end }}
+
+{{ define "main" }}
+    <div class="main-content">
+        <header class="text-center">
+            <h1 class="index-title">Privacy Policy</h1>
+        </header>
+
+        <section class="text-center">
+            We use Google Analytics to monitor usage of this website in order to improve it . We anonomise your IP before sending this.
+
+            We are hosted on Netlify.
+<!-- opt out of GA tracking? window['ga-disable-GA_TRACKING_ID'] = true; -->
+        </section>
+    </div>
+{{end}}
+
+{{ define "footer" }}
+    {{- partial "_shared/footer.html" . -}}
+{{end}}

@@ -1,33 +1,70 @@
-{{ define "header"}}
-    {{- partial "_shared/navbar.html" . -}}
-{{ end }}
-
 {{ define "main" }}
-    <div class="main-content">
-        <header class="text-center">
-            {{ with .Site.Params.index.picture }}
-                <img src="{{ . | urlize | relURL }}" class="rounded-circle text-center index-image">
-            {{ end }}
-            <h1 class="index-title">{{ .Site.Params.index.title }}</h1>
-        </header>
+<div class="main-content">
 
-        <section class="text-center">
-            {{ with .Site.Params.index.subtitle }}
-            <h3 class="index-sub">{{ . }}</h3>
-            {{ end }}
-            {{ with .Site.Params.index.mdtext }}
-            <h6 class="index-text">{{ . | markdownify }}</h6>
-            {{ end }}
-        </section>
+    <header>
+        <h1 class="index-title">Interested in <strong>doing good</strong> with technology?</h1>
+    </header>
+
+    <section>
+        <h3 class="index-sub">Join us and we'll share #techforgood actions you can take,
+            <br /> or <a href="/contribute">contribute</a> your own ideas & experiences
+        </h3>
+        <form action="{{ with .Site.Params.mailchimp }}{{.}}{{end}}" method="post" name="mc-embedded-subscribe-form"
+            target="_blank" novalidate>
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <label class="sr-only" for="homePageEmail">Email</label>
+                    <input type="email" class="form-control" placeholder="Email" id="homePageEmail" name="EMAIL" autocomplete="on" required>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                        name="{{ with .Site.Params.mailprotect }}{{.}}{{end}}" tabindex="-1" value=""></div>
+                <div class="col-auto">
+                    <input type="submit" value="Subscribe" class="btn btn-primary" name="subscribe">
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+<section class="recent-posts">
+    <div class="section-title">
+        <h2><span>Action you could take</span></h2>
     </div>
-    {{- partial "_shared/social.html" . -}}
-    {{ if isset .Site.Params.index "alertbar" }}
-    	{{ if .Site.Params.index.alertbar }}
-            {{- partial "_shared/alertbar.html" . -}}
-        {{ end }}
-    {{ end }}
+    <div class="row listrecent">
+        {{ range first 3 (where .Site.RegularPages "Type" "actions") }}
+        {{- partial "list-partials/actionbox.html" . -}}
+        {{ .Render "summary"}}
+        {{end}}
+    </div>
+    <nav>
+        <ul class="pagination justify-content-end">
+            <li class="page-item">
+                <a class="page-link" href="actions/">View more actions...</a>
+            </li>
+        </ul>
+    </nav>
+</section>
+<section class="recent-posts">
+    <div class="section-title">
+        <h2><span>Experiences</span></h2>
+    </div>
+    <div class="row listrecent">
+        {{ range first 3 (where .Site.RegularPages "Type" "experiences") }}
+        {{- partial "list-partials/postbox.html" . -}}
+        {{end}}
+    </div>
+    <nav>
+        <ul class="pagination justify-content-end">
+            <li class="page-item">
+                <a class="page-link" href="experiences/">Read more experiences...</a>
+            </li>
+        </ul>
+    </nav>
+
+</section>
+{{- partial "_shared/social.html" . -}}
 {{end}}
 
-{{ define "footer" }}
-    {{- partial "_shared/footer.html" . -}}
-{{end}}
+{{ define "footer"}}
+    {{- partial "_shared/jumbotron.html" . -}}
+{{ end }}

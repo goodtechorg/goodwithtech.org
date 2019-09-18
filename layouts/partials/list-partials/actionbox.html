@@ -1,0 +1,28 @@
+<!-- begin post -->
+<div class="col-lg-4 col-md-6 mb-30px card-group">
+    <div class="card">
+        {{ $resource := (index (.Resources.ByType "image") 0).Fill "533x300" }}
+        
+        <div class="embed-responsive embed-responsive-16by9">
+            {{ if $resource }}
+                <a href="{{ .RelPermalink }}"><img class="card-img-top embed-responsive-item" src="{{$resource.RelPermalink}}" alt="{{ .Title }}"></a>
+            {{ end }}
+        </div>
+        
+        <div class="card-body">
+            <h2 class="card-title"><a class="text-dark" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <p class="card-text">{{ .Params.Summary }}</p>            
+        </div>
+        <div class="card-footer">
+            <small>
+                <span class="post-date">  {{ if .Params.isBusinessAction }} <i title="A business action" class="fas fa-building"></i> {{else}} <i title="An individual action" class="fas fa-user"></i>{{end}} -
+
+                {{ .Params.commitment.time }} {{ .Params.commitment.frequency }} -
+                     <i class="fas fa-globe"></i>
+                    {{ .Params.location }}
+                </span>
+            </small>
+        </div>
+    </div>
+</div>
+<!-- end post -->

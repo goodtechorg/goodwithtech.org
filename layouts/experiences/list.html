@@ -1,0 +1,23 @@
+{{ define "main" }}
+    <main class="main-content">
+        <!-- Posts Index
+        ================================================== -->
+        <section class="recent-posts">            
+            <div class="section-title">                
+                <h2><span>Experiences</span> <a href="" class="badge badge-secondary float-right">Share an experience</a></h2> 
+            </div>
+            <div class="row listrecent">
+                {{ $post_paginator := .Paginate (.Pages) 6 }}
+                {{ range $post_paginator.Pages }}
+                    {{- partial "list-partials/postbox.html" . -}}
+                {{end}}
+            </div>
+        </section>
+        {{- partial "list-partials/pagination.html" $post_paginator -}}
+    </main>
+{{ end }}
+
+{{ define "footer"}}
+    {{- partial "_shared/jumbotron.html" . -}}
+    {{- partial "_shared/footer.html" . -}}
+{{ end }}

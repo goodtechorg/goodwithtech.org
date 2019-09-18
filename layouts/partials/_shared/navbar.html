@@ -1,17 +1,10 @@
 <!-- Begin Menu Navigation
 ================================================== -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container pr-0">
-        <!-- Begin Logo -->
-        <a class="navbar-brand" href="{{ .Site.BaseURL }}/">
-
-            {{ with .Site.Params.logo }}
-            <img src="{{ . | urlize | relURL }}" alt="logo">
-            {{ else }}
-            <span style="font-family:Righteous;">{{.Site.Title}}</span>
-            {{ end }}
+        <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+            <img src="/logo.png" alt="logo">
         </a>
-        <!-- End Logo -->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -27,8 +20,11 @@
                     <a class="nav-link" href="{{ .URL }}">{{ .Name | title }}</a>
                 </li>
                 {{ end }}
+                <li class="nav-item"><a href="http://eepurl.com/geCUU1" class="btn btn-primary">Join us <i class="fa fa-sign-in-alt"></i></a>
+                </li>
             </ul>
         </div>
+
         <!-- End Menu -->
     </div>
 </nav>

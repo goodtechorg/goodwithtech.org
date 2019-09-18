@@ -1,0 +1,82 @@
+{{ define "main" }}
+<main class="main-content">
+
+    <div class="section-title">
+        <h2><span><a href="/actions">Actions</a> :: {{ .Title }}</span></h2>
+    </div>
+
+    <!-- Begin Article
+        ================================================== -->
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Share -->
+            <div class="col-md-2 pl-0">
+                {{- partial "single-partials/share.html" . -}}
+            </div>
+            <!-- Post -->
+            <div class="col-md-9 flex-first flex-md-unordered">
+                <div class="mainheading">
+                    <h1 class="posttitle">{{ .Title }}</h1>
+                    
+                    <span class="action-meta">Eligibility: </span>
+                    <span class="action-meta-detail">{{ .Params.eligibility }} </span><br />
+                    <span class="action-meta">Location:</span> <span class="badge badge-secondary badge-pill">{{.Params.location}}</span>
+                    <span class="action-meta">Commitment: </span> <span class="badge badge-secondary badge-pill">{{ .Params.commitment.time }}</span> <span class="badge badge-secondary badge-pill">{{.Params.commitment.frequency}}</span><br />
+                    <span class="action-meta">Causes: </span>
+                    {{ range .Params.causes }}
+                    <a class="badge badge-secondary badge-pill" href="{{ "/causes/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                {{ end }}
+                </div>
+
+                <!-- Post Featured Image -->
+                {{with .Params.image}}
+                <img class="featured-image img-fluid" src="{{ . | urlize | relURL }}" alt="thumbnail for this post">
+                {{end}}
+                <!-- End Featured Image -->
+
+                <!-- Post Content -->
+                <div class="article-post">
+                    {{ .Content}}
+                    <h3>Opportunity for action</h3>
+                    <p>{{ .Params.opportunity }}</p>
+                    <p><a href="{{.Params.actionUrl }}" class="btn btn-secondary">Take action now</a></p>
+
+                    <h3>Experiences</h3>
+                    <div class="article-post">
+                        {{ $reusablePages := .Resources.Match "experience*" }}
+                        {{ range $reusablePages }}
+                        <h5>{{ .Params.Author }} on <a href="{{.Params.src}}">{{ (urls.Parse .Params.src).Host }}</a>: </h5>
+                        <blockquote>{{ .Content }}</blockquote>
+                        {{ end }}
+                    </div>
+                </div>
+
+                <p><a href="/share/" class="btn btn-secondary">Share your experience</a></p>
+
+                <!-- Prev/Next -->
+                <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    {{with .PrevInSection}}
+                    <a class="prev d-block col-md-6" href="{{.RelPermalink}}"> &laquo; {{.Title}}</a>
+                    {{end}}
+                    {{with .NextInSection}}
+                    <a class="next d-block col-md-6 text-lg-right" href="{{.RelPermalink}}">{{.Title}} &raquo;</a>
+                    {{end}}
+                    <div class="clearfix"></div>
+                </div>
+                <!-- End Prev/Next -->
+            </div>
+            <!-- End Post -->
+        </div>
+    </div>
+    <!-- End Article
+        ================================================== -->
+    {{ if .Params.comments }}
+    {{- partial "single-partials/comments.html" . -}}
+    {{ end }}
+</main>
+{{ end }}
+
+{{ define "footer"}}
+{{- partial "_shared/jumbotron.html" . -}}
+{{ end }}

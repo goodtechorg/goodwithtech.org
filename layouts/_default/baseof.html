@@ -3,12 +3,11 @@
     {{- partial "_shared/head.html" . -}}
     <body>
         {{- partial "_shared/navbar.html" . -}}
-        <div class="site-content">   
-            <div class="container">
-                {{- block "main" . }}{{- end }}
-            </div>
-            {{- block "footer" . }}{{- end }}
-        </div>
+        <main class="site-content container">   
+            {{- block "main" . }}{{- end }}
+        </main>
+        {{- block "footer" . }}{{- end }}
+        {{- partial "_shared/footer.html" . -}}
         {{- partial "_shared/js.html" . -}}
         {{ template "_internal/google_analytics.html" . }}
     </body>
