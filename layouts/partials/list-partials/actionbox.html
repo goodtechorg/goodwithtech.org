@@ -15,11 +15,9 @@
         </div>
         <div class="card-footer">
             <small>
-                <span class="post-date">  {{ if .Params.isBusinessAction }} <i title="A business action" class="fas fa-building"></i> {{else}} <i title="An individual action" class="fas fa-user"></i>{{end}} -
-
-                {{ .Params.commitment.time }} {{ .Params.commitment.frequency }} -
-                     <i class="fas fa-globe"></i>
-                    {{ .Params.location }}
+                <span class="post-date">
+                    {{ if .Params.isBusinessAction }} <i title="A business action" class="fas fa-building"></i> {{else}} <i title="An individual action" class="fas fa-user"></i>{{end}}&nbsp;-
+                    {{ .Params.commitment.time }} {{ .Params.commitment.frequency }} -&nbsp;<i class="fas fa-globe"></i> {{ .Params.location }}
                 </span>
             </small>
         </div>
