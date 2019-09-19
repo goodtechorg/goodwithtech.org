@@ -2,7 +2,7 @@
     <main class="main-content">
         <section class="recent-posts">            
             <div class="section-title">                
-                <h2><span>Actions</span><a href="" class="badge badge-secondary float-right">Share an action</a></h2> 
+                <h2><span>Actions</span><a href="mailto:hello@goodwithtech.org" class="badge badge-secondary float-right">Share an action</a></h2> 
             </div>            
             <div class="row listrecent">
                 {{ $post_paginator := .Paginate (.Pages) 6 }}
@@ -14,7 +14,6 @@
         {{- partial "list-partials/pagination.html" $post_paginator -}}
     </main>
 {{ end }}
-
 {{ define "footer"}}
     {{- partial "_shared/jumbotron.html" . -}}
 {{ end }}
