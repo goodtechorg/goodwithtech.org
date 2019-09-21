@@ -31,7 +31,7 @@
         <h2><span>Action you could take</span></h2>
     </div>
     <div class="row listrecent">
-        {{ range first 3 (where .Site.RegularPages "Type" "actions") }}
+        {{ range first 6 (where .Site.RegularPages "Type" "actions") }}
         {{- partial "list-partials/actionbox.html" . -}}
         {{ .Render "summary"}}
         {{end}}
