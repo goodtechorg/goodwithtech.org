@@ -5,7 +5,7 @@
                 <h2><span>Actions</span><a href="mailto:hello@goodwithtech.org" class="badge badge-secondary float-right">Share an action</a></h2> 
             </div>            
             <div class="row listrecent">
-                {{ $post_paginator := .Paginate (.Pages) 6 }}
+                {{ $post_paginator := .Paginate (.Pages) 24 }}
                 {{ range $post_paginator.Pages }}
                     {{- partial "list-partials/actionbox.html" . -}}
                 {{end}}
