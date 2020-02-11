@@ -1,0 +1,9 @@
+/* purgecss start ignore */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+/* purgecss end ignore */
+
+@import "../assets/styles/main.scss";
+
+

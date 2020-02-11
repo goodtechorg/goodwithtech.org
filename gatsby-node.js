@@ -11,7 +11,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const { data } = await graphql(`
     query PagesQuery {
-      sectors: allAirtable(filter: {table: {eq: "Sectors"}}) {
+      causes: allAirtable(filter: {table: {eq: "Causes"}}) {
         nodes {
           data {
             Slug
@@ -21,10 +21,12 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  data.sectors.nodes.forEach(({ data }) => {
+  console.log(JSON.stringify(data));
+
+  data.causes.nodes.forEach(({ data }) => {
     createPage({
-      path: `/sectors/${data.Slug}`,
-      component: path.resolve(`./src/templates/sector.js`),
+      path: `/causes/${data.Slug}`,
+      component: path.resolve(`./src/templates/cause.js`),
       context: { slug: data.Slug },
     })
   })
