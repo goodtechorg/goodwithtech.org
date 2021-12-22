@@ -20,7 +20,7 @@ const Navbar = ({ menus }) => {
                 <ul className="navbar-nav ml-auto">
                     {menus.map((menu) =>
                     <li class="nav-item">
-                        <Link className="nav-link" activeClassName="active" href={menu.url}>{menu.name}</Link>
+                        <Link className="nav-link" activeClassName="active" to={menu.url}>{menu.name}</Link>
                     </li>
                     )}
                     <li className="nav-item"><a href="http://eepurl.com/geCUU1" class="btn btn-primary">Join us <i class="fa fa-sign-in-alt"></i></a>
